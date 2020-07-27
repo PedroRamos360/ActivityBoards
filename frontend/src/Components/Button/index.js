@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './index.css';
 
-export default class Input extends Component {
+export default class Button extends Component {
     render() {
         return (
-            <input class={this.props.class} type={this.props.type}/>
+            <button>{this.props.children}</button>
         );
     };
 };

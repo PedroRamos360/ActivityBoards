@@ -1,4 +1,4 @@
-.login {
+.Home-login {
     background-color: white;
     display: flex;
     border-width: 10px;
@@ -11,7 +11,7 @@
     height: 320px;
 }
 
-.content {
+.Home-content {
     height: 100%;
     width: 100%;
     display: flex;
@@ -19,25 +19,12 @@
     flex-direction: column;
 }
 
-.input-information {
+.Home-input-information {
     display: flex;
     flex-direction: column;
 }
 
-button.primary-btn {
-    width: 200px;
-    height: 60px;
-    color: white;
-    border-radius: 8px;
-    outline: none;
-    border-style: none;
-    background-color: #2ebc4f;
-    cursor: pointer;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-
-img.background-image {
+img.Home-background-image {
     top: 0;
     left: 0;
     position: absolute;
@@ -47,7 +34,7 @@ img.background-image {
     z-index: -1;
 }
 
-.modal {
+.Home-modal {
     top: 0;
     left: 0;
     width: 100vw;
@@ -57,7 +44,7 @@ img.background-image {
     z-index: -1;
 }
 
-.title {
+.Home-title {
     color: #3cff6a;
     font-size: 42px;
     margin-bottom: 50px;
