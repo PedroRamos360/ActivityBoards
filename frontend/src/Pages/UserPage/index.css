@@ -1,0 +1,75 @@
+#user-page img {
+   top: 0;
+   left: 0;
+   position: absolute;
+   opacity: 60%;
+   width: 100vw;
+   height: 100vh;
+   z-index: -1;
+}
+
+#user-page .modal {
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   position: absolute;
+   background-color: black;
+   z-index: -1;
+}
+
+#user-page .title {
+   color: #3cff6a;
+   font-size: 42px;
+   margin-bottom: 40px;
+   font-weight: 100;
+}
+
+#user-page .page-header {
+   margin-left: 50px;
+   margin-right: 50px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+}
+
+#user-page .page-header button {
+   color: #f1f1f1;
+   display: inline;
+   font-size: large;
+   background: none;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   transition: 0.2s;
+}
+
+#user-page .page-header button:hover {
+   color: #bebebe;
+}
+
+#user-page .page-header button:active {
+   color: #a5a5a5;
+}
+
+#user-page .board-content {
+   margin-left: 50px;
+}
+
+#user-page .board {
+   background-color: #ffff;
+   padding: 10px;
+   height: 120px;
+   width: 393px;
+   border-radius: 8px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+
+#user-page .board-content label {
+   color: #fff;
+}
+
+

@@ -1,64 +1,64 @@
-.Logon-login {
-    background-color: white;
-    display: flex;
-    border-width: 10px;
-    padding-bottom: 20px;
-    padding-top: 20px;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 8px;
-    width: 500px;
-    height: 450px;
+#logon-page .login {
+   background-color: white;
+   display: flex;
+   border-width: 10px;
+   padding-bottom: 20px;
+   padding-top: 20px;
+   flex-direction: column;
+   align-items: center;
+   border-radius: 8px;
+   width: 500px;
+   height: 450px;
 }
 
-.Logon-content {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+#logon-page {
+   height: 100%;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
 }
 
-.Logon-title {
-    color: #3cff6a;
-    font-size: 42px;
-    margin-bottom: 40px;
-    font-weight: 100;
+#logon-page .title {
+   color: #3cff6a;
+   font-size: 42px;
+   margin-bottom: 40px;
+   font-weight: 100;
 }
 
-.Logon-input-information {
-    display: flex;
-    flex-direction: column;
+#logon-page .input-information {
+   display: flex;
+   flex-direction: column;
 }
 
-.Logon-input-information#last {
-    margin-left: 28px;
+#logon-page .input-information#last {
+   margin-left: 28px;
 }
 
-.Logon-input-name {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+#logon-page .input-name {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
 }
 
-img.Logon-background-image {
-    top: 0;
-    left: 0;
-    position: absolute;
-    opacity: 60%;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
+#logon-page img {
+   top: 0;
+   left: 0;
+   position: absolute;
+   opacity: 60%;
+   width: 100vw;
+   height: 100vh;
+   z-index: -1;
 }
 
-.Logon-modal {
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    background-color: black;
-    z-index: -1;
+#logon-page .modal {
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   position: absolute;
+   background-color: black;
+   z-index: -1;
 }
 
 

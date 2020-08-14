@@ -1,4 +1,4 @@
-.Home-login {
+#home-page .login {
     background-color: white;
     display: flex;
     border-width: 10px;
@@ -11,7 +11,7 @@
     height: 320px;
 }
 
-.Home-content {
+#home-page {
     height: 100%;
     width: 100%;
     display: flex;
@@ -19,12 +19,12 @@
     flex-direction: column;
 }
 
-.Home-input-information {
+#home-page .input-information {
     display: flex;
     flex-direction: column;
 }
 
-img.Home-background-image {
+#home-page img {
     top: 0;
     left: 0;
     position: absolute;
@@ -34,7 +34,7 @@ img.Home-background-image {
     z-index: -1;
 }
 
-.Home-modal {
+#home-page .modal {
     top: 0;
     left: 0;
     width: 100vw;
@@ -44,14 +44,14 @@ img.Home-background-image {
     z-index: -1;
 }
 
-.Home-title {
+#home-page .title {
     color: #3cff6a;
     font-size: 42px;
     margin-bottom: 50px;
     font-weight: 100;
 }
 
-p {
+#home-page p {
     bottom: 10px;
     font-size: small;
     color: #8b8b8b;
