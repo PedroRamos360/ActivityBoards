@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import './index.css';
 import Rectangle from '../Rectangle';
 
-export default function Week() {
-   return (
-      <div className='week'>
-         <Rectangle type='rectangle-off'/>
-         <Rectangle type='rectangle-off'/>
-         <Rectangle type='rectangle-off'/>
-         <Rectangle type='rectangle-off'/>
-         <Rectangle type='rectangle-off'/>
-         <Rectangle type='rectangle-off'/>
-         <Rectangle type='rectangle-off'/>
-      </div>
-   );
+export default class Week extends Component {
+   render() {
+      return (
+         <div className='week' id={this.props.id}>
+            <Rectangle type='rectangle-off'/>
+            <Rectangle type='rectangle-off'/>
+            <Rectangle type='rectangle-off'/>
+            <Rectangle type='rectangle-off'/>
+            <Rectangle type='rectangle-off'/>
+            <Rectangle type='rectangle-off'/>
+            <Rectangle type='rectangle-off'/>
+         </div>
+      );
+   }
 }

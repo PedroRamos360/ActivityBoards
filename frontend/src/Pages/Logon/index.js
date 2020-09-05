@@ -1,10 +1,12 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
 import '../../global.css';
 import './index.css';
 
 export default function Logon() {
+   const history = useHistory();
    return (
       <div id="logon-page">
          <div className="modal">
@@ -35,7 +37,7 @@ export default function Logon() {
                      <label>Password</label>
                      <Input type="password"/>
                </div>
-               <Button className="primary-btn">Register</Button>
+               <Button onClick={() => {history.push('/')}} className="primary-btn">Register</Button>
             </div>
          </form>
       </div>

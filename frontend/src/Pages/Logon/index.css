@@ -44,8 +44,8 @@
 #logon-page img {
    top: 0;
    left: 0;
-   position: absolute;
    opacity: 60%;
+   object-fit: cover;
    width: 100vw;
    height: 100vh;
    z-index: -1;
