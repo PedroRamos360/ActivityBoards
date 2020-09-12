@@ -11,10 +11,29 @@ export default class Board extends Component {
                <label>{this.props.label}</label>
             </header>
             <div className='board-content'>
-               <Week />
-               <Week />
-               <Week />
-               <Week />
+               <div className="day-labels">
+                  <label>Sunday</label>
+                  <label>Monday</label>
+                  <label>Tuesday</label>
+                  <label>Wednesday</label>
+                  <label>Thursday</label>
+                  <label>Friday</label>
+                  <label>Saturday</label>
+               </div>
+               <div className="board-weeks">
+                  <div className="week-labels">
+                     <label>Week 1</label>
+                     <label>Week 2</label>
+                     <label>Week 3</label>
+                     <label>Week 4</label>
+                  </div>
+                  <div className="weeks-content">
+                     <Week />
+                     <Week />
+                     <Week />
+                     <Week />
+                  </div>
+               </div>
             </div>
          </main>
       );
