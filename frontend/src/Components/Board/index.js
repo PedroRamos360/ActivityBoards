@@ -35,6 +35,7 @@ export default class Board extends Component {
                   </div>
                </div>
             </div>
+            <button>Done</button>
          </main>
       );
    }

@@ -1,5 +1,6 @@
 #user-page .board {
    margin-left: 50px;
+   margin-bottom: 15px;
 }
 
 #user-page .board header {
@@ -15,12 +16,31 @@
    font-size: large;
 }
 
+#user-page .board button {
+   width: 413px;
+   height: 30px;
+   color: white;
+   border-radius: 0 0 8px 8px;
+   outline: none;
+   border-style: none;
+   background-color: #00c4cc;
+   transition: 0.1s;
+   cursor: pointer;
+}
+
+#user-page .board button:hover {
+   background-color: #01a8ad;
+}
+
+#user-page .board button:active {
+   background-color: #008388;
+}
+
 #user-page .board-content {
    background-color: #ffff;
    padding: 10px;
    height: 150px;
    width: 393px;
-   border-radius: 0 0 8px 8px;
    display: flex;
    flex-direction: row;
    align-items: center;

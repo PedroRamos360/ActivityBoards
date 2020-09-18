@@ -18,7 +18,12 @@ export default function UserPage() {
                <h1 className='title'>Your boards</h1>
                <button>+ New Board</button>
             </header>
-            <Board label="Matemática"/>
+            <div className="boards">
+               <Board label="Matemática"/>
+               <Board label="Xadrez"/>
+               <Board label="Programação"/>
+               <Board label="Ler"/>
+            </div>
         </div>
     );
 }
