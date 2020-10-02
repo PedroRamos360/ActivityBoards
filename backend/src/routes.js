@@ -1,11 +1,25 @@
 const express = require('express');
-
+const mongoose = require('./database/index');
 const routes = express.Router();
 
+const User = require('./models/user');
+
 // Rota de registro do usuário
-routes.post('/api/register', (req, res) => {
-   const { email, firstname, lastname, password } = req.body;
-   res.send("Usuário registrado");
+routes.post('/api/register', async (req, res) => {
+   const { email } = req.body;
+
+   try {
+      if (await User.findOne({ email }))
+         return res.status(400).send({ error: "User already exists"});
+
+      const user = await User.create(req.body);
+
+      user.password = undefined;
+
+      return res.send({ user });
+   } catch (error) {
+      return res.status(400).send({ error: 'Registration failed' });
+   }
 });
 
 // Rota de login do usuário
