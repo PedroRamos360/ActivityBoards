@@ -9,4 +9,14 @@
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 20px;
+    transition: 0.3s;
 }
+
+.Button:hover {
+   background-color: #2eb34d;
+}
+
+.Button:active {
+   background-color: #2b9e46;
+}
+
