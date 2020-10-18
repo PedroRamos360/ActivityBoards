@@ -4,8 +4,11 @@ import Button from '../../Components/Button';
 import '../../global.css';
 import './index.css';
 import api from '../../services/api';
+import { useHistory } from 'react-router-dom';
 
 export default function Logon() {
+   const history = useHistory();
+
    const [email, setEmail] = useState('');
    const [firstname, setFirstname] = useState('');
    const [lastname, setLastname] = useState('');
@@ -23,6 +26,7 @@ export default function Logon() {
          });
 
          alert('Usuário registrado com sucesso');
+         history.push('/');
       } catch (error) {
          alert('Verifique seus dados e tente novamente');
       }

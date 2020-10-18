@@ -15,14 +15,16 @@ export default function Home() {
    function handleLogin(event) {
       event.preventDefault();
 
-      const data = new FormData();
-
-      data.append('email', email);
-      data.append('password', password);
-
-      console.log({
+      api.post('/auth/authenticate', {
          email,
          password
+      }).then(response => {
+         const token = response.data.token;
+         localStorage.setItem("token", token);
+         const userId = response.data.user._id;
+         history.push(`/UserPage/${userId}`);
+      }, error => {
+         alert('Usuário e/ou senha incorretos.');
       });
    }
    return (
