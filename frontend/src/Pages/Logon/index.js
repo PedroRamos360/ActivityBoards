@@ -25,10 +25,10 @@ export default function Logon() {
             password
          });
 
-         alert('Usuário registrado com sucesso');
+         alert('User registered with sucess');
          history.push('/');
       } catch (error) {
-         alert('Verifique seus dados e tente novamente');
+         alert('Verify your data and try again');
       }
    }
 

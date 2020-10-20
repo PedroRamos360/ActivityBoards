@@ -21,11 +21,12 @@ export default function Home() {
          password
       }).then(response => {
          const token = response.data.token;
+         const firstname = response.data.user.firstname;
+         localStorage.setItem('firstname', firstname);
          localStorage.setItem("token", token);
-         const userId = response.data.user._id;
-         history.push(`/UserPage/${userId}`);
+         history.push(`/UserPage/${firstname}`);
       }, error => {
-         alert('Usuário e/ou senha incorretos.');
+         alert('User and/or password wrong.');
       });
    }
    return (

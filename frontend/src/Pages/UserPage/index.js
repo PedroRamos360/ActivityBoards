@@ -9,46 +9,70 @@ import api from '../../services/api';
 
 export default function UserPage() {
    const [boards, setBoards] = useState([]);
+   const [modalVisible, setModalVisible] = useState(false);
+   const [newBoardName, setNewBoardName] = useState('');
+
+   const token = localStorage.getItem("token");
+   const firstname = localStorage.getItem('firstname');
+
+   const config = {
+      headers: { Authorization: `Bearer ${token}` },
+   };
+
 
    useEffect(() => {
-      const token = localStorage.getItem("token");
-      const route = window.location.href;
-      const userId = route.split('/')[4];
-
-      const config = {
-         headers: { Authorization: `Bearer ${token}` },
-      };
-
-      api.get(`/boards/${userId}`, config).then(response => {
+      api.get(`/boards`, config).then(response => {
          if (response.data.userBoards != null) {
             setBoards(response.data.userBoards);
          }
       });
-   }, []);
+   });
+
+   function handleNewBoard() {
+      setModalVisible(true);
+   }
+
+   async function createNewBoard() {
+      try {
+         await api.post(`/boards`, {
+            title: newBoardName
+         }, config);
+         setModalVisible(false);
+      } catch (error) {
+         alert("Problem registering user, try again later");
+      }
+   }
 
    return (
       <div id='user-page'>
          <div className='modal'>
             <img
-               className='background-image'
+
+               className={`background-image ${modalVisible ? 'modal-background' : ''}`}
                src={backgroundImage}
                alt='background'
             />
          </div>
-         <header className="page-header">
-            <h1 className='title'>Your boards</h1>
-            <button>+ New Board</button>
+         <header className={`page-header ${modalVisible ? 'modal-background' : ''}`}>
+            <h1 className='title'>{`Welcome, ${firstname}`}</h1>
+            <button onClick={handleNewBoard}>+ New Board</button>
          </header>
-         <div className="boards">
+         <div className={`boards ${modalVisible ? 'modal-background' : ''}`}>
             {boards.map(board => {
                return <Board key={board._id} label={board.title}/>
             })}
          </div>
-         <div className='newboard-modal'>
+         <div className={`newboard-modal ${modalVisible ? '' : 'hidden'}`}>
             <div className='newboard-input'>
                <label>Name</label>
-               <Input type="text"/>
-               <Button>Submit</Button>
+               <Input
+                  type="text"
+                  value={newBoardName}
+                  onChange={event => {
+                     setNewBoardName(event.target.value);
+                  }}
+               />
+               <Button onClick={createNewBoard}>Create new board</Button>
             </div>
          </div>
       </div>

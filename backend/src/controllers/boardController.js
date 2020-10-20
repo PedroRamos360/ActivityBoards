@@ -6,19 +6,19 @@ const router = express.Router();
 
 router.use(authMiddleware);
 
-// rota pra listar todos bords
-router.get('/:userId', async (req, res) => {
+// rota pra listar todos boards de um usuário
+router.get('/', async (req, res) => {
    try {
       const boards = await Board.find().populate('user');
       const userBoards = [];
       try {
          boards.forEach(board => {
-            if (board.user._id == req.params.userId) {
+            if (board.user._id == req.userId) {
                userBoards.push(board);
             }
          });
-      } catch {
-         return res.send();
+      } catch (error) {
+         return res.send(error);
       }
 
       return res.send({ userBoards });
@@ -27,7 +27,7 @@ router.get('/:userId', async (req, res) => {
    }
 });
 
-// rota para listar todos boards de um usuário
+// rota para listar informações de um board
 router.get('/:boardId', async (req, res) => {
    try {
       const board = await Board.findById(req.params.boardId).populate('user');
