@@ -58,6 +58,37 @@
    grid-template-columns: repeat(2, 1fr);
 }
 
+#user-page .newboard-modal {
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   position: fixed;
+   z-index: 0;
+   visibility: hidden;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+#user-page .newboard-input {
+   height: 300px;
+   width: 500px;
+   border-radius: 20px;
+   background-color: white;
+   z-index: 100000;
+
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+#user-page .background-modal {
+   opacity: 50%;
+}
+
 @media (max-width: 960px) {
    #user-page .boards {
       grid-template-columns: 1fr;
