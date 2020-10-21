@@ -1,7 +1,8 @@
-#user-page img {
+#user-page img.background-image {
    top: 0;
    left: 0;
    opacity: 60%;
+   position: fixed;
    object-fit: cover;
    width: 100vw;
    height: 100vh;
@@ -13,7 +14,7 @@
    left: 0;
    width: 100vw;
    height: 100vh;
-   position: absolute;
+   position: fixed;
    background-color: black;
    z-index: -1;
 }

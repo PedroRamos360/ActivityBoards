@@ -4,7 +4,9 @@ import './index.css';
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
 import Board from '../../Components/Board';
+
 import backgroundImage from '../../assets/user-page.jpg';
+
 import api from '../../services/api';
 
 export default function UserPage() {
@@ -38,6 +40,7 @@ export default function UserPage() {
             title: newBoardName
          }, config);
          setModalVisible(false);
+         setNewBoardName('');
       } catch (error) {
          alert("Problem registering user, try again later");
       }
@@ -47,7 +50,6 @@ export default function UserPage() {
       <div id='user-page'>
          <div className='modal'>
             <img
-
                className={`background-image ${modalVisible ? 'modal-background' : ''}`}
                src={backgroundImage}
                alt='background'
@@ -59,7 +61,7 @@ export default function UserPage() {
          </header>
          <div className={`boards ${modalVisible ? 'modal-background' : ''}`}>
             {boards.map(board => {
-               return <Board key={board._id} label={board.title}/>
+               return <Board key={board._id} postid={board._id} label={board.title}/>
             })}
          </div>
          <div className={`newboard-modal ${modalVisible ? '' : 'hidden'}`}>
