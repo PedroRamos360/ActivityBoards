@@ -9,9 +9,7 @@ app.use(bodyParser.json())
 // entender parâmetros de url
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(cors({
-   origin: 'http://localhost:3000'
-}));
+app.use(cors());
 
 require('./controllers/authController')(app);
 require('./controllers/boardController')(app);

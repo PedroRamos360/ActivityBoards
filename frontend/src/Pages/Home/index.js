@@ -26,7 +26,11 @@ export default function Home() {
          localStorage.setItem("token", token);
          history.push(`/UserPage/${firstname}`);
       }, error => {
-         alert('User and/or password wrong.');
+         if (String(error).indexOf("Network Error") === 7) {
+            alert("Network Error");
+         } else {
+            alert("Email and/or password wrong");
+         }
       });
    }
    return (

@@ -3,6 +3,7 @@
    height: 15px;
    background-color: #e0dfdf;
    border-radius: 10%;
+   margin-bottom: 4%;
 }
 
 .rectangle-on {
@@ -10,4 +11,5 @@
    height: 15px;
    background-color: #3cff6a;
    border-radius: 10%;
+   margin-bottom: 4%;
 }

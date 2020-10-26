@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
-import Week from '../Week';
+import Day from '../Day';
 import './index.css';
 import deleteIcon from '../../assets/x-square.svg';
 
 import api from '../../services/api';
 
 export default function Board(props) {
-   const [weeks, setWeeks] = useState(['1', '2', '3', '4']);
+   const [days, setDays] = useState([]);
 
    const token = localStorage.getItem("token");
    const config = {
@@ -31,17 +31,16 @@ export default function Board(props) {
                const daysToSunday = creationDate.getDay();
                const firstDay = new Date(creationDate.getFullYear(), creationDate.getMonth(), creationDate.getDate() - daysToSunday);
 
-               setWeeks([]);
-               const nweeks = [];
-               for (let i = 0; i < 4; i++) {
-                  const date = new Date(firstDay.getFullYear(), firstDay.getMonth(), firstDay.getDate() + 7*i);
-                  nweeks.push(`${i}/${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`);
+               const daysArray = [];
+               for (let i = 0; i < 28; i++) {
+                  const date = new Date(firstDay.getFullYear(), firstDay.getMonth(), firstDay.getDate() + 1*i);
+                  daysArray.push(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`);
                }
-               setWeeks(nweeks);
+               setDays(daysArray);
             });
          });
       });
-   }, []);
+   }, [config]);
 
   function deleteBoard(event) {
       const boardId = event.target.getAttribute("postid");
@@ -73,9 +72,9 @@ export default function Board(props) {
                   <label>Week 3</label>
                   <label>Week 4</label>
                </div>
-               <div className="weeks-content">
-                  {weeks.map(week => {
-                     return <Week key={week.slice(0, 1)} date={week}/>
+               <div className="days">
+                  {days.map(day => {
+                     return <Day type='rectangle-off' key={day} date={day}/>
                   })}
                </div>
             </div>

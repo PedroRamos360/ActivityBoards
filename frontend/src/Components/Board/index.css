@@ -107,7 +107,7 @@
    font-size: small;
 }
 
-.board-content .board-weeks .weeks-content {
-   display: flex;
-   flex-direction: row;
+.board-content .board-weeks .days {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
 }
