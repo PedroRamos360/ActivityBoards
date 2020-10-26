@@ -43,7 +43,7 @@
    width: 100%;
 }
 
-.board button.submit {
+.board button.done {
    width: 413px;
    height: 30px;
    color: white;
@@ -55,11 +55,11 @@
    cursor: pointer;
 }
 
-.board button.submit:hover {
+.board button.done:hover {
    background-color: #01a8ad;
 }
 
-.board button.submit:active {
+.board button.done:active {
    background-color: #008388;
 }
 

@@ -52,7 +52,7 @@ router.post('/', async (req, res) => {
 router.put('/:boardId', async (req, res) => {
    try {
       const board = await Board.findByIdAndUpdate(req.params.boardId, {
-         title: req.body.title,
+         daysDone: req.body.daysDone
       }, { new: true });
       
       return res.send({ board });
