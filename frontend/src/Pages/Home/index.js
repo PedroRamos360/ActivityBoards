@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import Input from '../../Components/Input';
@@ -13,6 +13,13 @@ export default function Home() {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
 
+   useEffect(() => {
+      if (localStorage.getItem('token')) {
+         history.push(`/UserPage`);
+      }
+      // eslint-disable-next-line
+   }, []);
+
    function handleLogin(event) {
       event.preventDefault();
 
@@ -24,7 +31,7 @@ export default function Home() {
          const firstname = response.data.user.firstname;
          localStorage.setItem('firstname', firstname);
          localStorage.setItem("token", token);
-         history.push(`/UserPage/${firstname}`);
+         history.push(`/UserPage`);
       }, error => {
          if (String(error).indexOf("Network Error") === 7) {
             alert("Network Error");

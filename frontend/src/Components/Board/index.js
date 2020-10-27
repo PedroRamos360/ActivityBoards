@@ -14,11 +14,15 @@ export default function Board(props) {
       headers: { Authorization: `Bearer ${token}` },
    };
 
-   // Criar estrutura dos boards
    useEffect(() => {
-      api.get('/boards', config).then(response => {
-         const boards = response.data.userBoards;
-         console.log(boards.length);
+      getBoardInfo();
+   // eslint-disable-next-line
+   }, []);
+
+   // Criar estrutura dos boards
+   function getBoardInfo() {
+      api.get('/boards', config).then(res => {
+         const boards = res.data.userBoards;
          boards.forEach(board => {
             api.get(`/boards/${board._id}`, config).then(response => {
                // extração das informações da data recebida
@@ -52,7 +56,6 @@ export default function Board(props) {
                      const strDate = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
                      if (daysDone.includes(strDate)) {
                         week.push(`${strDate}.rectangle-on`);
-                        console.log("ei, eu fui chamada!");
                      } else {
                         week.push(`${strDate}.rectangle-off`);
                      }
@@ -74,7 +77,7 @@ export default function Board(props) {
             });
          });
       });
-   }, []);
+   }
 
    function deleteBoard(event) {
       const boardId = event.target.getAttribute("postid");
