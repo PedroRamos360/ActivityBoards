@@ -96,8 +96,48 @@
    opacity: 50%;
 }
 
+@media (max-width: 520px) {
+   #user-page .newboard-input {
+      height: 300px;
+      width: 450px;
+
+   }
+}
+
+@media (max-width: 570px) {
+   #user-page .page-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+   }
+
+   #user-page .page-header button {
+      font-size: 30px;
+   }
+}
+
 @media (max-width: 960px) {
    #user-page .boards {
       grid-template-columns: 1fr;
+   }
+}
+
+@media (min-width: 1500px) {
+   #user-page .boards {
+      grid-template-columns: repeat(3, 1fr);
+   }
+}
+
+@media (min-width: 1950px) {
+   #user-page .boards {
+      grid-template-columns: repeat(4, 1fr);
+   }
+}
+
+@media (min-width: 2500px) {
+   #user-page .boards {
+      grid-template-columns: repeat(5, 1fr);
    }
 }

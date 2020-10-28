@@ -15,82 +15,81 @@ export default function Board(props) {
    };
 
    useEffect(() => {
-      getBoardInfo();
-   // eslint-disable-next-line
+      api.get(`/boards/${props.postid}`, config).then(response => {
+         // extração das informações da data recebida
+         const createdAt = response.data.board.createdAt;
+         const daysDone = [];
+         for (let index = 0; index < response.data.board.daysDone.length; index++) {
+            daysDone.push(response.data.board.daysDone[index]);
+         }
+         const parts = createdAt.split('-');
+         const year = parts[0];
+         const month = parts[1];
+         const day = parts[2].slice(0, 2);
+
+         // Criação da respectiva data como Date();
+         const creationDate = new Date(parseInt(year), parseInt(month)-1, parseInt(day));
+         const daysToSunday = creationDate.getDay();
+         const firstDay = new Date(creationDate.getFullYear(), creationDate.getMonth(), creationDate.getDate() - daysToSunday);
+         console.log(firstDay);
+
+         const daysArray = [];
+         const week1 = [];
+         const week2 = [];
+         const week3 = [];
+         const week4 = [];
+         const weeks = [week1, week2, week3, week4]
+         let index = 0;
+         // Loop das semanas
+         weeks.forEach(week => {
+            // Loop de cada dia na semana
+            for (let i = 0; i < 7; i++) {
+               const date = new Date(firstDay.getFullYear(), firstDay.getMonth(), firstDay.getDate() + 1*index);
+               const strDate = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+               if (daysDone.includes(strDate)) {
+                  week.push(`${strDate}.rectangle-on`);
+               } else {
+                  week.push(`${strDate}.rectangle-off`);
+               }
+               index += 1;
+            }
+         });
+         // Loop para organizar os dias no array
+         for (let i = 0; i < 7; i++) {
+            daysArray.push(week1[i]);
+            daysArray.push(week2[i]);
+            daysArray.push(week3[i]);
+            daysArray.push(week4[i]);
+         }
+
+         // OBS: o código acima é burro, entretanto é a única forma que eu achei para resolver o problema.
+         // Então, eu do futuro/pessoa aleatória no meu github, não se preocupe em entender esse código
+         // simplesmente faça melhor.
+         setDays(daysArray);
+      });
+      // eslint-disable-next-line
    }, []);
 
-   // Criar estrutura dos boards
-   function getBoardInfo() {
-      api.get('/boards', config).then(res => {
-         const boards = res.data.userBoards;
-         boards.forEach(board => {
-            api.get(`/boards/${board._id}`, config).then(response => {
-               // extração das informações da data recebida
-               const createdAt = response.data.board.createdAt;
-               const daysDone = []
-               for (let index = 0; index < response.data.board.daysDone.length; index++) {
-                  daysDone.push(response.data.board.daysDone[index]);
-               }
-               const parts = createdAt.split('-');
-               const year = parts[0];
-               const month = parts[1];
-               const day = parts[2].slice(0, 2);
-
-               // Criação da respectiva data como Date();
-               const creationDate = new Date(parseInt(year), parseInt(month), parseInt(day));
-               const daysToSunday = creationDate.getDay();
-               const firstDay = new Date(creationDate.getFullYear(), creationDate.getMonth(), creationDate.getDate() - daysToSunday);
-
-               const daysArray = [];
-               const week1 = [];
-               const week2 = [];
-               const week3 = [];
-               const week4 = [];
-               const weeks = [week1, week2, week3, week4]
-               let index = 0;
-               // Loop das semanas
-               weeks.forEach(week => {
-                  // Loop de cada dia na semana
-                  for (let i = 0; i < 7; i++) {
-                     const date = new Date(firstDay.getFullYear(), firstDay.getMonth(), firstDay.getDate() + 1*index);
-                     const strDate = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
-                     if (daysDone.includes(strDate)) {
-                        week.push(`${strDate}.rectangle-on`);
-                     } else {
-                        week.push(`${strDate}.rectangle-off`);
-                     }
-                     index += 1;
-                  }
-               });
-               // Loop para organizar os dias no array
-               for (let i = 0; i < 7; i++) {
-                  daysArray.push(week1[i]);
-                  daysArray.push(week2[i]);
-                  daysArray.push(week3[i]);
-                  daysArray.push(week4[i]);
-               }
-
-               // OBS: o código acima é burro, entretanto é a única forma que eu achei para resolver o problema.
-               // Então, eu do futuro/pessoa aleatória no meu github, não se preocupe em entender esse código
-               // simplesmente faça melhor.
-               setDays(daysArray);
-            });
-         });
-      });
-   }
-
    function deleteBoard(event) {
-      const boardId = event.target.getAttribute("postid");
+      const boardId = props.postid;
 
       api.delete(`/boards/${boardId}`, config);
    }
 
    async function handleDayCompleted(event) {
-      const boardId = event.target.getAttribute("postid");
+      const boardId = props.postid;
       let daysDoneArray = []
-      await api.get(`/boards/${boardId}`, config).then(response => {
+      api.get(`/boards/${boardId}`, config).then(response => {
          daysDoneArray = response.data.board.daysDone;
-         console.log(daysDoneArray);
+         const now = new Date();
+         const dateToSend = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}`;
+         if (!daysDoneArray.includes(dateToSend)) {
+            daysDoneArray.push(dateToSend);
+            api.put(`/boards/${boardId}`, {
+               daysDone: daysDoneArray
+            }, config);
+            window.location.reload(false);
+         }
       });
    }
    return (
@@ -98,7 +97,7 @@ export default function Board(props) {
          <header>
             <label>{props.label}</label>
             <button onClick={deleteBoard} className="delete">
-               <img className="delete-icon" src={deleteIcon} alt="delete" postid={props.postid}/>
+               <img className="delete-icon" src={deleteIcon} alt="delete"/>
             </button>
          </header>
          <div className='board-content'>
@@ -127,7 +126,7 @@ export default function Board(props) {
                </div>
             </div>
          </div>
-         <button className="done" postid={props.postid} onClick={handleDayCompleted}>Done</button>
+         <button className="done" onClick={handleDayCompleted}>Done</button>
       </main>
    );
 }

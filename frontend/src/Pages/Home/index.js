@@ -14,8 +14,14 @@ export default function Home() {
    const [password, setPassword] = useState('');
 
    useEffect(() => {
-      if (localStorage.getItem('token')) {
-         history.push(`/UserPage`);
+      const token = localStorage.getItem('token');
+      if (token) {
+         const config = {
+            headers: { Authorization: `Bearer ${token}` },
+         };
+         api.get('boards', config).then(() => {
+            history.push(`/UserPage`);
+         }, () => {});
       }
       // eslint-disable-next-line
    }, []);

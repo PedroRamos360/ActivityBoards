@@ -8,8 +8,10 @@ import Board from '../../Components/Board';
 import backgroundImage from '../../assets/user-page.jpg';
 
 import api from '../../services/api';
+import { useHistory } from 'react-router-dom';
 
 export default function UserPage() {
+   const history = useHistory();
    const [boards, setBoards] = useState([]);
    const [modalVisible, setModalVisible] = useState(false);
    const [newBoardName, setNewBoardName] = useState('');
@@ -21,12 +23,14 @@ export default function UserPage() {
       headers: { Authorization: `Bearer ${token}` },
    };
 
-
    useEffect(() => {
       api.get(`/boards`, config).then(response => {
          if (response.data.userBoards != null) {
             setBoards(response.data.userBoards);
          }
+      }, () => {
+         alert('Acess Denied');
+         history.push('/');
       });
    });
 
