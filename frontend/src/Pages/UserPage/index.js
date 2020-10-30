@@ -5,6 +5,7 @@ import Input from '../../Components/Input';
 import Button from '../../Components/Button';
 import Board from '../../Components/Board';
 
+import deleteIcon from '../../assets/x-square.svg';
 import backgroundImage from '../../assets/user-page.jpg';
 
 import api from '../../services/api';
@@ -38,6 +39,12 @@ export default function UserPage() {
       setModalVisible(true);
    }
 
+   function handleLogOut() {
+      localStorage.setItem('token', null);
+      localStorage.setItem('firstname', null);
+      history.push('/');
+   }
+
    async function createNewBoard() {
       try {
          await api.post(`/boards`, {
@@ -48,6 +55,10 @@ export default function UserPage() {
       } catch (error) {
          alert("Problem registering user, try again later");
       }
+   }
+
+   function closeModal() {
+      setModalVisible(false);
    }
 
    return (
@@ -61,7 +72,12 @@ export default function UserPage() {
          </div>
          <header className={`page-header ${modalVisible ? 'modal-background' : ''}`}>
             <h1 className='title'>{`Welcome, ${firstname}`}</h1>
-            <button onClick={handleNewBoard}>+ New Board</button>
+            <div className="buttons-container">
+               <button className="new-board" onClick={handleNewBoard}>+ New Board</button>
+               <button className="log-out" onClick={handleLogOut}>
+                  Log out
+               </button>
+            </div>
          </header>
          <div className={`boards ${modalVisible ? 'modal-background' : ''}`}>
             {boards.map(board => {
@@ -70,14 +86,21 @@ export default function UserPage() {
          </div>
          <div className={`newboard-modal ${modalVisible ? '' : 'hidden'}`}>
             <div className='newboard-input'>
-               <label>Name</label>
-               <Input
-                  type="text"
-                  value={newBoardName}
-                  onChange={event => {
-                     setNewBoardName(event.target.value);
-                  }}
-               />
+               <div className="top-content">
+                  <button onClick={closeModal} className="delete">
+                     <img className="icon" src={deleteIcon} alt="delete"/>
+                  </button>
+                  <div className="input-block">
+                     <label className="board-name">Name</label>
+                     <Input
+                        type="text"
+                        value={newBoardName}
+                        onChange={event => {
+                           setNewBoardName(event.target.value);
+                        }}
+                     />
+                  </div>
+               </div>
                <Button onClick={createNewBoard}>Create new board</Button>
             </div>
          </div>

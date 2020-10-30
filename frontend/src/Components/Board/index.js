@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Day from '../Day';
 import './index.css';
 import deleteIcon from '../../assets/x-square.svg';
+import restartIcon from '../../assets/rotate.svg';
 
 import api from '../../services/api';
 
@@ -31,7 +32,6 @@ export default function Board(props) {
          const creationDate = new Date(parseInt(year), parseInt(month)-1, parseInt(day));
          const daysToSunday = creationDate.getDay();
          const firstDay = new Date(creationDate.getFullYear(), creationDate.getMonth(), creationDate.getDate() - daysToSunday);
-         console.log(firstDay);
 
          const daysArray = [];
          const week1 = [];
@@ -70,13 +70,23 @@ export default function Board(props) {
       // eslint-disable-next-line
    }, []);
 
-   function deleteBoard(event) {
+   function deleteBoard() {
       const boardId = props.postid;
 
       api.delete(`/boards/${boardId}`, config);
    }
 
-   async function handleDayCompleted(event) {
+   async function restartBoard() {
+      const boardId = props.postid;
+
+      await api.put(`/boards/${boardId}`, {
+         daysDone: []
+      }, config);
+
+      window.location.reload(false);
+   }
+
+   function handleDayCompleted() {
       const boardId = props.postid;
       let daysDoneArray = []
       api.get(`/boards/${boardId}`, config).then(response => {
@@ -96,9 +106,14 @@ export default function Board(props) {
       <main className='board'>
          <header>
             <label>{props.label}</label>
-            <button onClick={deleteBoard} className="delete">
-               <img className="delete-icon" src={deleteIcon} alt="delete"/>
-            </button>
+            <div className="buttons-container">
+               <button onClick={restartBoard} className="restart">
+                  <img className="icon" src={restartIcon} alt="delete"/>
+               </button>
+               <button onClick={deleteBoard} className="delete">
+                  <img className="icon" src={deleteIcon} alt="delete"/>
+               </button>
+            </div>
          </header>
          <div className='board-content'>
             <div className="day-labels">

@@ -19,6 +19,11 @@
    align-self: center;
 }
 
+.board .buttons-container {
+   display: flex;
+   justify-content: space-between;
+}
+
 .board button.delete {
    width: 30px;
    height: 30px;
@@ -28,6 +33,8 @@
    background-color: #f86079;
    transition: 0.1s;
    cursor: pointer;
+
+   margin-left: 10px;
 }
 
 .board button.delete:hover {
@@ -37,8 +44,26 @@
 .board button.delete:active {
    background-color: #f83556;
 }
+.board button.restart {
+   width: 30px;
+   height: 30px;
+   border-radius: 8px;
+   outline: none;
+   border-style: none;
+   background-color: #ffcd43;
+   transition: 0.1s;
+   cursor: pointer;
+}
 
-.board .delete-icon {
+.board button.restart:hover {
+   background-color: #fcc42a;
+}
+
+.board button.restart:active {
+   background-color: #fcbc0d;
+}
+
+.board .icon {
    height: 100%;
    width: 100%;
 }

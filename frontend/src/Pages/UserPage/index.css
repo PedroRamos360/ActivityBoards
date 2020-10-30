@@ -39,7 +39,13 @@
    justify-content: space-between;
 }
 
-#user-page .page-header button {
+#user-page .page-header .buttons-container {
+   display: flex;
+   flex-direction: column;
+   margin-top: 20px;
+}
+
+#user-page .page-header button.new-board {
    color: #f1f1f1;
    display: inline;
    font-size: large;
@@ -50,12 +56,72 @@
    transition: 0.2s;
 }
 
-#user-page .page-header button:hover {
+#user-page .page-header button.new-board:hover {
    color: #dadada;
 }
 
-#user-page .page-header button:active {
+#user-page .page-header button.new-board:active {
    color: #a5a5a5;
+}
+
+#user-page .newboard-modal button.delete {
+   width: 40px;
+   height: 40px;
+   border-radius: 8px;
+   outline: none;
+   border-style: none;
+   background-color: #f86079;
+   transition: 0.1s;
+   cursor: pointer;
+
+   margin-top: 10px;
+   margin-left: 10px;
+}
+
+#user-page .newboard-modal button.delete:hover {
+   background-color: #f84d69;
+}
+
+#user-page .newboard-modal button.delete:active {
+   background-color: #f83556;
+}
+
+#user-page .newboard-modal .icon {
+   height: 100%;
+   width: 100%;
+}
+
+#user-page .newboard-modal .top-content {
+   height: 100%;
+   display: flex;
+   flex-direction: row;
+   margin: auto;
+   margin-right: 40px;
+   top: 0;
+}
+
+#user-page .newboard-modal .delete {
+   margin-bottom: 60px;
+}
+
+#user-page .page-header button.log-out {
+   color: #ff0000;
+   display: inline;
+   font-size: large;
+   font-weight: bold;
+   background: none;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   transition: 0.2s;
+}
+
+#user-page .page-header button.log-out:hover {
+   color: #e00000;
+}
+
+#user-page .page-header button.log-out:active {
+   color: #c40202;
 }
 
 #user-page .boards {
@@ -82,10 +148,26 @@
    border-radius: 20px;
    background-color: white;
 
+   display: grid;
+   grid-template-rows: 1fr 0.7fr;
+}
+
+#user-page .Button {
+   margin: auto;
+   margin-bottom: 10%;
+}
+
+#user-page .newboard-input .board-name {
+   font-size: large;
+   font-weight: 400;
+   font-family: Roboto;
+}
+
+#user-page .newboard-input .input-block {
    display: flex;
    flex-direction: column;
-   align-items: center;
-   justify-content: center;
+   margin: auto;
+   margin-top: 15%;
 }
 
 #user-page .hidden {
