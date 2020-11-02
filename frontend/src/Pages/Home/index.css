@@ -1,63 +1,89 @@
 #home-page .login {
-    background-color: white;
-    display: flex;
-    border-width: 10px;
-    padding-bottom: 20px;
-    padding-top: 20px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    width: 500px;
-    height: 320px;
+   background-color: white;
+   display: flex;
+   border-width: 10px;
+   padding-bottom: 20px;
+   padding-top: 20px;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   border-radius: 8px;
+   width: 500px;
+   height: 320px;
 }
 
 #home-page {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+   height: 100%;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
 }
 
 #home-page .input-information {
-    display: flex;
-    flex-direction: column;
-}
-
-#home-page img {
-    top: 0;
-    left: 0;
-    object-fit: cover;
-    opacity: 60%;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
+   display: flex;
+   flex-direction: column;
 }
 
 #home-page .modal {
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    background-color: black;
-    z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: black;
+  z-index: -1;
 }
 
 #home-page .title {
-    color: #3cff6a;
-    font-size: 42px;
-    margin-bottom: 50px;
-    font-weight: 100;
+   color: #3cff6a;
+   font-size: 42px;
+   margin-bottom: 50px;
+   font-weight: 100;
 }
 
 #home-page p {
-    bottom: 10px;
-    font-size: small;
-    color: #8b8b8b;
+   bottom: 10px;
+   font-size: small;
+   color: #8b8b8b;
 }
 
 a {
-    text-decoration: none;
+   text-decoration: none;
+}
+
+@media (max-width: 520px) {
+  #home-page .login {
+     width: 450px;
+  }
+}
+
+@media (max-width: 460px) {
+  #home-page .login {
+     width: 400px;
+  }
+}
+
+@media (max-width: 410px) {
+  #home-page .login {
+     width: 350px;
+  }
+}
+
+@media (max-width: 520px) {
+  #home-page input {
+     width: 350px;
+  }
+}
+
+@media (max-width: 460px) {
+  #home-page input {
+     width: 300px;
+  }
+}
+
+@media (max-width: 410px) {
+  #home-page input {
+     width: 250px;
+  }
 }

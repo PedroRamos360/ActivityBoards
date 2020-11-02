@@ -20,7 +20,7 @@ export default function Home() {
             headers: { Authorization: `Bearer ${token}` },
          };
          api.get('boards', config).then(() => {
-            history.push(`/UserPage`);
+            history.push(`/userpage`);
          }, () => {});
       }
       // eslint-disable-next-line
@@ -37,7 +37,7 @@ export default function Home() {
          const firstname = response.data.user.firstname;
          localStorage.setItem('firstname', firstname);
          localStorage.setItem("token", token);
-         history.push(`/UserPage`);
+         history.push(`/userpage`);
       }, error => {
          if (String(error).indexOf("Network Error") === 7) {
             alert("Network Error");
@@ -49,7 +49,7 @@ export default function Home() {
    return (
       <div id="home-page">
          <div className="modal">
-               <img className="background-image" src="https://images.unsplash.com/photo-1593642634367-d91a135587b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" alt="background"></img>
+               <img className="background-img" src="https://images.unsplash.com/photo-1593642634367-d91a135587b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" alt="background"></img>
          </div>
          <h1 className="title">Activity Boards</h1>
          <form>
@@ -75,7 +75,7 @@ export default function Home() {
                      />
                   </div>
                   <Button onClick={handleLogin}>Log in</Button>
-                  <p>Don't have an account? <Link to="/Logon">Sign up</Link></p>
+                  <p>Don't have an account? <Link to="/register">Sign up</Link></p>
                </div>
          </form>
       </div>

@@ -28,14 +28,24 @@ export default function Logon() {
          alert('User registered with sucess');
          history.push('/');
       } catch (error) {
+         if (!String(error).indexOf("Network Error") === 7) {
+            if (error.response.data.error == "User already exists") {
+               alert("User already exists");
+               return;
+            }
+         } else {
+            alert("Network error");
+            return;
+         }
+
          alert('Verify your data and try again');
       }
    }
 
    return (
-      <div id="logon-page">
+      <div id="register-page">
          <div className="modal">
-               <img className="background-image" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" alt="background"></img>
+               <img className="background-img" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" alt="background"></img>
          </div>
          <h1 className="title">Register</h1>
          <form>
