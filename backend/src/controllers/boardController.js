@@ -51,9 +51,7 @@ router.post('/', async (req, res) => {
 
 router.put('/:boardId', async (req, res) => {
    try {
-      const board = await Board.findByIdAndUpdate(req.params.boardId, {
-         daysDone: req.body.daysDone
-      }, { new: true });
+      const board = await Board.findByIdAndUpdate(req.params.boardId, req.body, { new: true });
       
       return res.send({ board });
    } catch (error) {
