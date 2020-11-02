@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
-import '../../global.css';
 import './index.css';
 import api from '../../services/api';
 import { useHistory } from 'react-router-dom';
@@ -28,14 +27,14 @@ export default function Logon() {
          alert('User registered with sucess');
          history.push('/');
       } catch (error) {
-         if (!String(error).indexOf("Network Error") === 7) {
-            if (error.response.data.error == "User already exists") {
+         if (String(error).indexOf("Network Error") === 7) {
+            alert("Network error");
+            return;
+         } else {
+            if (error.response.data.error === "User already exists") {
                alert("User already exists");
                return;
             }
-         } else {
-            alert("Network error");
-            return;
          }
 
          alert('Verify your data and try again');

@@ -78,11 +78,10 @@ export default function Board(props) {
 
    async function restartBoard() {
       const boardId = props.postid;
-
       await api.put(`/boards/${boardId}`, {
-         daysDone: []
+         daysDone: [],
+         createdAt: new Date().toJSON()
       }, config);
-
       window.location.reload(false);
    }
 

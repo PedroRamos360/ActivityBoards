@@ -3,7 +3,6 @@ import { Link, useHistory } from 'react-router-dom';
 
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
-import '../../global.css';
 import './index.css';
 import api from '../../services/api';
 

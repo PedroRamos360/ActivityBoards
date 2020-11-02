@@ -65,7 +65,7 @@ export default function UserPage() {
       <div id='user-page'>
          <div className='modal'>
             <img
-               className={`background-im ${modalVisible ? 'modal-background' : ''}`}
+               className={`background-img ${modalVisible ? 'modal-background' : ''}`}
                src={backgroundImage}
                alt='background'
             />
