@@ -1,5 +1,5 @@
 # ActivityBoards
-This is an web application done with Javascript and ReactJS in the frontend and NodeJS for the backend.
+This is an web application done with Javascript and ReactJS in the frontend and NodeJS and MongoDB for the backend.
 
 The application was made with the intention of helping it's users to organize a daily routine of activities. They can create boards
 to track their activity for 4 weeks. That way the users can see how many days they have managed to complete their activities in the
